@@ -26,6 +26,7 @@ public class SecurityConfig {
                 .sessionManagement(s->s.sessionCreationPolicy(SessionCreationPolicy.ALWAYS)) //when cookies, session build
                 .exceptionHandling(error -> error
                         .authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED)))
+                .logout(l->l.logoutSuccessUrl("http://localhost:5173"))
                 .oauth2Login(o-> o.
                         defaultSuccessUrl("http://localhost:5173"));
         return http.build();
